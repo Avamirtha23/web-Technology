@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Performance Calculator</title>
+  <meta name="description" content="Calculate student total marks, average, grade, and pass/fail status with this sleek interactive tool.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts for premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Decorative background elements -->
+  <div class="background-decorations">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+  
+  <main class="container">
+    <header class="header animate-fade-in">
+      <h1>Academic Performance Calculator</h1>
+      <p class="subtitle">Enter marks out of 100 for the five core subjects to analyze the results.</p>
+    </header>
+
+    <section class="card animate-slide-up">
+      <form id="marksForm" novalidate>
+        <div class="subject-inputs">
+          <!-- Subject 1: Mathematics -->
+          <div class="input-group">
+            <label for="math">Mathematics</label>
+            <div class="input-wrapper">
+              <input type="number" id="math" name="math" min="0" max="100" placeholder="e.g. 85" required>
+              <span class="focus-border"></span>
+            </div>
+            <span class="error-msg" id="math-error"></span>
+          </div>
+
+          <!-- Subject 2: Physics -->
+          <div class="input-group">
+            <label for="physics">Physics</label>
+            <div class="input-wrapper">
+              <input type="number" id="physics" name="physics" min="0" max="100" placeholder="e.g. 78" required>
+              <span class="focus-border"></span>
+            </div>
+            <span class="error-msg" id="physics-error"></span>
+          </div>
+
+          <!-- Subject 3: Chemistry -->
+          <div class="input-group">
+            <label for="chemistry">Chemistry</label>
+            <div class="input-wrapper">
+              <input type="number" id="chemistry" name="chemistry" min="0" max="100" placeholder="e.g. 92" required>
+              <span class="focus-border"></span>
+            </div>
+            <span class="error-msg" id="chemistry-error"></span>
+          </div>
+
+          <!-- Subject 4: English -->
+          <div class="input-group">
+            <label for="english">English</label>
+            <div class="input-wrapper">
+              <input type="number" id="english" name="english" min="0" max="100" placeholder="e.g. 88" required>
+              <span class="focus-border"></span>
+            </div>
+            <span class="error-msg" id="english-error"></span>
+          </div>
+
+          <!-- Subject 5: Computer Science -->
+          <div class="input-group">
+            <label for="computers">Computer Science</label>
+            <div class="input-wrapper">
+              <input type="number" id="computers" name="computers" min="0" max="100" placeholder="e.g. 95" required>
+              <span class="focus-border"></span>
+            </div>
+            <span class="error-msg" id="computers-error"></span>
+          </div>
+        </div>
+
+        <button type="submit" id="calculateBtn" class="btn-primary">
+          <span>Calculate Performance</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </form>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultsSection" class="card results-card hidden">
+      <h2>Results Summary</h2>
+      <div class="results-grid">
+        <!-- Total Marks -->
+        <div class="result-tile">
+          <span class="tile-label">Total Marks</span>
+          <span class="tile-value" id="totalValue">0</span>
+          <span class="tile-meta">out of 500</span>
+        </div>
+        <!-- Average -->
+        <div class="result-tile">
+          <span class="tile-label">Average</span>
+          <span class="tile-value" id="averageValue">0.0%</span>
+          <span class="tile-meta">percentage</span>
+        </div>
+        <!-- Grade -->
+        <div class="result-tile">
+          <span class="tile-label">Final Grade</span>
+          <span class="tile-value grade-value" id="gradeValue">-</span>
+          <span class="tile-meta" id="gradeDescription">Based on average</span>
+        </div>
+        <!-- Status -->
+        <div class="result-tile">
+          <span class="tile-label">Status</span>
+          <span class="tile-value status-badge" id="statusValue">-</span>
+          <span class="tile-meta" id="statusDescription">Passing mark: 40+ each</span>
+        </div>
+      </div>
+      
+      <!-- Summary Analysis & Reset -->
+      <div class="results-footer">
+        <p id="analysisSummary"></p>
+        <div>
+          <button id="resetBtn" class="btn-secondary">Clear and Reset</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

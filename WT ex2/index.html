@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of Oxford - Admission Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="main-header">
+        <img src="oxford_crest.jpg" alt="University of Oxford Crest" class="school-logo">
+        <h1>University of Oxford</h1>
+        <p>Student Admission Application Form</p>
+        
+        <!-- Photo representing the University of Oxford campus -->
+        <div class="photo-container">
+            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80" alt="Radcliffe Camera, University of Oxford" class="university-photo">
+            <p class="photo-caption">Radcliffe Camera, University of Oxford</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Form demonstrating the Box Model with margin, border, and padding -->
+        <form id="admission-form" action="#" method="POST" enctype="multipart/form-data">
+            <h2>Student Admission Form</h2>
+            
+            <div class="form-group">
+                <label for="student-name" class="form-label">Full Name:</label>
+                <input type="text" id="student-name" name="name" class="form-input" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="student-email" class="form-label">Email Address:</label>
+                <input type="email" id="student-email" name="email" class="form-input" placeholder="john.doe@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="student-tel" class="form-label">Telephone / Phone:</label>
+                <input type="tel" id="student-tel" name="tel" class="form-input" placeholder="+1 (555) 000-0000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="student-dob" class="form-label">Date of Birth:</label>
+                <input type="date" id="student-dob" name="dob" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label for="student-marks" class="form-label">Previous Marks (%):</label>
+                <input type="number" id="student-marks" name="marks" class="form-input" min="0" max="100" placeholder="e.g. 85" required>
+            </div>
+
+            <div class="form-group">
+                <span class="form-label">Gender:</span>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="male" required> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                    <label><input type="radio" name="gender" value="other"> Other</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span class="form-label">Hobbies:</span>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="hobbies" value="reading"> Reading</label>
+                    <label><input type="checkbox" name="hobbies" value="sports"> Sports</label>
+                    <label><input type="checkbox" name="hobbies" value="music"> Music</label>
+                    <label><input type="checkbox" name="hobbies" value="coding"> Coding</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="student-course" class="form-label">Select Course:</label>
+                <select id="student-course" name="course" class="form-input" required>
+                    <option value="" disabled selected>Choose a course...</option>
+                    <option value="cs">B.Sc. Computer Science</option>
+                    <option value="ba">B.A. Business Administration</option>
+                    <option value="me">B.Tech. Mechanical Engineering</option>
+                    <option value="bt">B.Sc. Biotechnology</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="student-photo" class="form-label">Upload Passport Photo:</label>
+                <input type="file" id="student-photo" name="photo" class="form-input-file" accept="image/*" required>
+            </div>
+
+            <div class="form-group">
+                <label for="student-comments" class="form-label">Additional Comments / Address:</label>
+                <textarea id="student-comments" name="comments" class="form-textarea" rows="4" placeholder="Enter any extra details or your address..."></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn-submit">Submit Application</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 University of Oxford. All rights reserved.</p>
+    </footer>
+</body>
+</html>
