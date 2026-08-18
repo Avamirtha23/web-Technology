@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding the World Wide Web</title>
+  <meta name="description" content="An educational guide explaining the World Wide Web, computer networks, URL structure, domain names, web browsers, web servers, and client vs server scripting.">
+  <meta name="keywords" content="World Wide Web, WWW, internet, network, URL, Domain Name, Browser, Server, Client-side Scripting, Server-side Scripting">
+  <style>
+    :root { --primary-color: #2b6cb0; --secondary-color: #319795; --text-color: #2d3748; --bg-color: #f7fafc; --card-bg: #ffffff; --border-color: #e2e8f0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+    header { background-color: var(--primary-color); position: relative; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+    .nav-logo { color: white; font-size: 1.25rem; font-weight: bold; text-decoration: none; }
+    .nav-menu { display: flex; list-style: none; gap: 1.25rem; }
+    .nav-menu a { color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: opacity 0.2s; }
+    .nav-menu a:hover { text-decoration: underline; opacity: 0.9; }
+    .hero-banner { background-color: #ebf8ff; border-bottom: 1px solid var(--border-color); padding: 3rem 2rem; text-align: center; }
+    .hero-banner h1 { color: var(--primary-color); font-size: 2.25rem; margin-bottom: 0.75rem; }
+    .hero-banner p { color: #4a5568; font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
+    .content-container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
+    section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 2.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); scroll-margin-top: 80px; }
+    section h2 { color: var(--primary-color); font-size: 1.6rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+    p { margin-bottom: 1rem; }
+    ul { margin-bottom: 1rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    .concepts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .concept-card { border: 1px solid var(--border-color); border-radius: 6px; padding: 1.25rem; background-color: #f8fafc; }
+    .concept-card h3 { color: var(--primary-color); font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .diagram-box { background-color: #f8fafc; border: 1px solid var(--border-color); border-radius: 6px; padding: 1.5rem; margin: 1.5rem 0; display: flex; justify-content: center; }
+    .svg-diagram { width: 100%; max-width: 800px; height: auto; }
+    .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .side-card { border: 1px solid var(--border-color); border-radius: 6px; padding: 1.5rem; background-color: #f8fafc; }
+    .side-card h3 { color: var(--primary-color); font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .table-responsive { overflow-x: auto; margin-top: 1rem; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { border: 1px solid var(--border-color); padding: 0.75rem 1rem; }
+    th { background-color: var(--primary-color); color: white; font-weight: 600; }
+    tr:nth-child(even) { background-color: #f8fafc; }
+    footer { background-color: #2d3748; color: #e2e8f0; text-align: center; padding: 2rem; margin-top: 3rem; }
+    footer p { margin-bottom: 0.5rem; font-size: 0.9rem; }
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; gap: 1rem; text-align: center; }
+      .nav-menu { flex-wrap: wrap; justify-content: center; }
+      .side-by-side { grid-template-columns: 1fr; }
+      section { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="#" class="nav-logo">Web Technology Portal</a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#internet-overview">Internet Overview</a></li>
+          <li><a href="#network-concepts">Concepts</a></li>
+          <li><a href="#url-structure">URL Structure</a></li>
+          <li><a href="#domain-name">Domain Name</a></li>
+          <li><a href="#browsers-servers">Browsers vs Servers</a></li>
+          <li><a href="#working-principle">Working Principle</a></li>
+          <li><a href="#scripting-comparison">Scripting</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+ 
+  <div class="hero-banner">
+    <h1>Understanding the World Wide Web</h1>
+    <p>An educational guide covering core internet architectures, networking concepts, and communication protocols.</p>
+  </div>
+
+  <div class="content-container">
+
+    
+    <section id="internet-overview">
+      <h2>1. Internet Overview</h2>
+      <p>The <strong>Internet</strong> is a global, physical infrastructure consisting of interconnected computers, fiber-optic cables, routers, satellites, and copper wires. It serves as the physical communication highway that allows devices to share data across the globe.</p>
+      <p>The <strong>World Wide Web (WWW)</strong>, on the other hand, is an information system built <em>on top of</em> the Internet. Created by Sir Tim Berners-Lee in 1989, the Web consists of digital documents, media, and websites connected by hyperlinks. Users retrieve these pages using web browser applications.</p>
+      <p><strong>Key Difference:</strong> Think of the Internet as the physical rail tracks, and the Web as the trains running on them carrying passengers and goods.</p>
+    </section>
+
+   
+    <section id="network-concepts">
+      <h2>2. Fundamental Computer Network Concepts</h2>
+      <p>Understanding the fundamental concepts used to manage data traffic over networks:</p>
+      <div class="concepts-grid">
+        <div class="concept-card"><h3>IP Address</h3><p>A unique numerical address assigned to every device on a network (like <code>192.168.1.1</code>). It tells routers where data is coming from and where it is going.</p></div>
+        <div class="concept-card"><h3>Packets</h3><p>Instead of sending large files all at once, data is chopped into smaller chunks called packets. Packets are transmitted independently and reassembled at their destination.</p></div>
+        <div class="concept-card"><h3>Protocols</h3><p>Standardized sets of rules that define how data is prepared, routed, and processed between computers (e.g. TCP, IP, HTTP, and HTTPS).</p></div>
+        <div class="concept-card"><h3>Client-Server Model</h3><p>A model where <strong>clients</strong> (like web browsers) request resources, and <strong>servers</strong> (powerful computers listening on the network) respond by sending those resources.</p></div>
+      </div>
+    </section>
+
+   
+    <section id="url-structure">
+      <h2>3. URL and its Structure</h2>
+      <p>A <strong>URL (Uniform Resource Locator)</strong> is the specific web address used to find resources on the Web. The diagram below details the components that make up a typical URL:</p>
+      
+      <div class="diagram-box">
+        <svg viewBox="0 0 800 180" class="svg-diagram" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="20" width="780" height="40" rx="4" fill="#edf2f7" stroke="#cbd5e0" stroke-width="2"/>
+          <text x="30" y="46" font-family="Courier, monospace" font-weight="bold" font-size="16" fill="#2d3748"><tspan fill="#e53e3e">https://</tspan><tspan fill="#3182ce">www.example.com</tspan><tspan fill="#319795">/courses/web-dev</tspan><tspan fill="#dd6b20">?session=fall</tspan></text>
+          <line x1="60" y1="60" x2="60" y2="105" stroke="#a0aec0" stroke-width="2" stroke-dasharray="4"/><line x1="210" y1="60" x2="210" y2="105" stroke="#a0aec0" stroke-width="2" stroke-dasharray="4"/><line x1="450" y1="60" x2="450" y2="105" stroke="#a0aec0" stroke-width="2" stroke-dasharray="4"/><line x1="680" y1="60" x2="680" y2="105" stroke="#a0aec0" stroke-width="2" stroke-dasharray="4"/>
+          <rect x="10" y="110" width="100" height="30" rx="4" fill="#e53e3e"/><text x="60" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="white" text-anchor="middle">Protocol</text>
+          <rect x="130" y="110" width="160" height="30" rx="4" fill="#3182ce"/><text x="210" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="white" text-anchor="middle">Domain Name</text>
+          <rect x="370" y="110" width="160" height="30" rx="4" fill="#319795"/><text x="450" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="white" text-anchor="middle">Path</text>
+          <rect x="600" y="110" width="160" height="30" rx="4" fill="#dd6b20"/><text x="680" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="white" text-anchor="middle">Query String</text>
+        </svg>
+      </div>
+
+      <ul>
+        <li><strong>Protocol (https://):</strong> Specifies the set of rules the browser uses to download files securely.</li>
+        <li><strong>Domain Name (www.example.com):</strong> The human-friendly address identifying the server computer hosting the site.</li>
+        <li><strong>Path (/courses/web-dev):</strong> The folder structure indicating the location of the resource on the server.</li>
+        <li><strong>Query String (?session=fall):</strong> Optional parameters passing specific data to server scripts (separated by <code>&amp;</code> if multiple).</li>
+      </ul>
+    </section>
+
+   
+    <section id="domain-name">
+      <h2>4. Domain Name</h2>
+      <p>A <strong>Domain Name</strong> is a human-readable text address that makes it easy for us to visit websites. Because computers communicate using numbers (IP Addresses), the web uses the <strong>Domain Name System (DNS)</strong> to look up domain names and translate them back into their numeric IPs.</p>
+      <p><strong>Domain Hierarchy:</strong> Domains are structured in tiers:</p>
+      <ul>
+        <li><strong>Top-Level Domain (TLD):</strong> The ending extension of the domain, representing its category or location. Examples: <code>.com</code> (commercial), <code>.org</code> (organizations), <code>.edu</code> (educational), and country codes like <code>.in</code> or <code>.uk</code>.</li>
+        <li><strong>Second-Level Domain (SLD):</strong> The unique name directly preceding the TLD. In <code>google.com</code>, <em>google</em> is the Second-Level Domain.</li>
+        <li><strong>Subdomain:</strong> Precedes the SLD to specify a sub-resource. In <code>blog.example.com</code>, <em>blog</em> is the subdomain.</li>
+      </ul>
+    </section>
+
+   
+    <section id="browsers-servers">
+      <h2>5. Web Browsers vs Web Servers</h2>
+      <p>The client-server relationship is driven by two main pieces of software:</p>
+      <div class="side-by-side">
+        <div class="side-card">
+          <h3>Web Browser (Client-Side)</h3>
+          <p>A web browser is software installed on the user's computer that fetches, parses, and displays files from web servers.</p>
+          <ul>
+            <li><strong>Main Job:</strong> Requests HTML/CSS/JS and renders them visually for users.</li>
+            <li><strong>Execution:</strong> Runs scripts locally on the user's CPU and RAM.</li>
+            <li><strong>Examples:</strong> Google Chrome, Mozilla Firefox, Safari, Microsoft Edge.</li>
+          </ul>
+        </div>
+        <div class="side-card">
+          <h3>Web Server (Server-Side)</h3>
+          <p>A web server is a program running on a remote computer that stores site assets and listens for incoming browser requests.</p>
+          <ul>
+            <li><strong>Main Job:</strong> Accepts requests, processes logic, retrieves database records, and sends files back.</li>
+            <li><strong>Execution:</strong> Runs scripts on remote server machines.</li>
+            <li><strong>Examples:</strong> Apache, Nginx, Microsoft IIS, Node.js (Express).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="working-principle">
+      <h2>6. Working Principle of a Website</h2>
+      <p>Whenever you navigate to a page, a standard series of communication steps occur. Below is the request-response lifecycle mapping this transaction:</p>
+
+      <div class="diagram-box">
+        <svg viewBox="0 0 800 220" class="svg-diagram" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#718096" /></marker></defs>
+          <rect x="20" y="80" width="160" height="90" rx="4" fill="#ebf8ff" stroke="#3182ce" stroke-width="2"/><text x="100" y="120" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#2b6cb0" text-anchor="middle">Client</text><text x="100" y="140" font-family="Arial, sans-serif" font-size="11" fill="#4a5568" text-anchor="middle">(Web Browser)</text>
+          <rect x="320" y="10" width="160" height="60" rx="4" fill="#e6fffa" stroke="#319795" stroke-width="2"/><text x="400" y="40" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#234e52" text-anchor="middle">DNS Server</text><text x="400" y="55" font-family="Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">(Name Resolver)</text>
+          <rect x="620" y="80" width="160" height="90" rx="4" fill="#fff5f5" stroke="#e53e3e" stroke-width="2"/><text x="700" y="120" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#9b2c2c" text-anchor="middle">Web Server</text><text x="700" y="140" font-family="Arial, sans-serif" font-size="11" fill="#4a5568" text-anchor="middle">(Hosting Files)</text>
+          <path d="M 140,80 Q 250,40 320,40" fill="none" stroke="#718096" stroke-width="2" marker-end="url(#arrow)"/><text x="210" y="52" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#718096">1. DNS Request</text>
+          <path d="M 320,55 Q 220,60 160,80" fill="none" stroke="#718096" stroke-width="2" marker-end="url(#arrow)"/><text x="210" y="75" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#718096">2. Returns IP</text>
+          <path d="M 180,110 L 620,110" fill="none" stroke="#718096" stroke-width="2" marker-end="url(#arrow)"/><text x="400" y="102" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#718096" text-anchor="middle">3. HTTP Request (GET)</text>
+          <path d="M 620,140 L 180,140" fill="none" stroke="#718096" stroke-width="2" marker-end="url(#arrow)"/><text x="400" y="155" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#718096" text-anchor="middle">4. HTTP Response (HTML/CSS/JS)</text>
+        </svg>
+      </div>
+
+      <ol>
+        <li><strong>DNS Lookup:</strong> You type the domain name. The browser sends a <em>DNS Request</em> to the DNS server to find the matching IP address.</li>
+        <li><strong>IP Returned:</strong> The DNS server replies with the IP address.</li>
+        <li><strong>HTTP Request:</strong> The browser connects directly to that IP address and sends an <em>HTTP Request</em> (like <code>GET</code>) to the Web Server, asking for the webpage files.</li>
+        <li><strong>HTTP Response:</strong> The Web Server processes the request and sends an <em>HTTP Response</em> back containing the webpage files (HTML, CSS, JavaScript). The browser reads the files and renders the website on your screen.</li>
+      </ol>
+    </section>
+
+    <section id="scripting-comparison">
+      <h2>7. Client-side vs Server-side Scripting</h2>
+      <p>Webpages often require scripts (programs) to perform actions. These scripts can run on either the client browser or the remote web server:</p>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Comparison Aspect</th>
+              <th>Client-Side Scripting</th>
+              <th>Server-Side Scripting</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Execution Location</strong></td>
+              <td>Runs locally inside the user's web browser.</td>
+              <td>Runs remotely on the web server.</td>
+            </tr>
+            <tr>
+              <td><strong>Common Languages</strong></td>
+              <td>JavaScript, HTML, CSS.</td>
+              <td>Node.js, PHP, Python, Java, Ruby, ASP.NET.</td>
+            </tr>
+            <tr>
+              <td><strong>Database Access</strong></td>
+              <td>Cannot access database directly (requires calling APIs securely).</td>
+              <td>Can connect directly to server databases (e.g. MySQL, MongoDB).</td>
+            </tr>
+            <tr>
+              <td><strong>Security</strong></td>
+              <td>Source code is public; visible via "View Source" in the browser.</td>
+              <td>Source code is secure and private on the server (only the output is sent).</td>
+            </tr>
+            <tr>
+              <td><strong>Main Purpose</strong></td>
+              <td>User interfaces, client validations, and slide-in animations.</td>
+              <td>User accounts, processing payments, and dynamic HTML generation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+ 
+  <footer>
+    <p>Understanding the World Wide Web - Web Technology Assignment</p>
+    <p>&copy; 2026 Educational Web Technology Portal. All rights reserved.</p>
+  </footer>
+
+<script>
+  window.onload = function () {
+    window.scrollTo(0, 0);
+  };
+</script>
+</body>
+</html>
